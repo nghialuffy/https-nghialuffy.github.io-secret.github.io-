@@ -94,8 +94,8 @@ function bubbleWrap() {
       if (!bubbles[i].getAttribute('popped')) {
         // add data-attribute to bubble
         bubbles[i].setAttribute('popped',true);
-        var audio = new Audio("secret.github.io/tones/" + ((i%16)+1) + '.wav');
-        console.log("secret.github.io/tones/" + ((i%16)+1) + '.wav')
+        var audio = new Audio("./tones/" + ((i%16)+1) + '.wav');
+        console.log("./tones/" + ((i%16)+1) + '.wav')
         audio.play();
         console.log(`Bubble ${i} popped!`);
         // add css class containing the animation
@@ -125,7 +125,7 @@ function scareImage(){
     for(i = 1 ; i < 10; i++){
       let timeout = setTimeout(() => {
         console.log(i);
-        document.getElementById('scare').src=`./secret.github.io/img/${i % 4 + 1}.png`;
+        document.getElementById('scare').src=`./img/${i % 4 + 1}.png`;
       },1000);
     }
 
@@ -136,14 +136,14 @@ function scareImage(){
     async function changeImg() {
       for (i = 1 ; i < 15; i++) {
         await delay();
-        document.getElementById('scare').src=`./secret.github.io/img/${i % 6 + 1}.png`;
+        document.getElementById('scare').src=`./img/${i % 6 + 1}.png`;
       }
       console.log('Done!');
     }
     changeImg();
 
 
-    var audio = new Audio("./secret.github.io/tones/nomusic.mp3");
+    var audio = new Audio("./tones/nomusic.mp3");
     audio.play();
 }
 // Rerender's new set of bubbles when window is resized
