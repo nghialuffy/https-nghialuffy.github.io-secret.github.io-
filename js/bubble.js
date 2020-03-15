@@ -117,7 +117,7 @@ function scareImage(){
     let divtag = document.getElementById("grid");
     divtag. parentNode. removeChild(divtag);
     let divScare = document.getElementById("scare");
-    divScare.setAttribute("src", `/img/1.png`);
+    divScare.setAttribute("src", `./img/1.png`);
     divScare.setAttribute("height", `${window.innerHeight}`);
     divScare.setAttribute("width", "100%");
     divScare.setAttribute("position", "absolute");
