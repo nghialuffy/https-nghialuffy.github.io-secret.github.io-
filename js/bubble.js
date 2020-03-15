@@ -94,7 +94,7 @@ function bubbleWrap() {
       if (!bubbles[i].getAttribute('popped')) {
         // add data-attribute to bubble
         bubbles[i].setAttribute('popped',true);
-        var audio = new Audio("./tones/" + ((i%16)+1) + '.wav');
+        var audio = new Audio("./tones/" + ((i%8)+1) + '.wav');
         console.log("./tones/" + ((i%16)+1) + '.wav')
         audio.play();
         console.log(`Bubble ${i} popped!`);
