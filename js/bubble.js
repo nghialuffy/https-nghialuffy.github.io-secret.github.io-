@@ -9,7 +9,6 @@ window.addEventListener('load', () => {
 })
 
 
-
 bubbleWrap();
 
 
@@ -71,7 +70,7 @@ function bubbleWrap() {
   
   const bubbles = document.getElementsByClassName("bubble");
   var playList = ["./tones/1.wav","./tones/2.wav","./tones/3.wav","./tones/4.wav","./tones/5.wav","./tones/6.wav","./tones/7.wav","./tones/8.wav"]
-
+  
   for (let i = 0, numBubbles = bubbles.length; i < numBubbles; i += 1) {
     const pairsOfRows = 2 * numberTilesWide;
     const greaterThanSecondRowFirst = i % pairsOfRows >= numberTilesWide;
@@ -101,6 +100,7 @@ function bubbleWrap() {
         audio.load();
         audio.volume = 1;
         audio.play();
+
         console.log(`Bubble ${i} popped!`);
         // add css class containing the animation
         bubbles[i].classList.add('pop');
@@ -118,6 +118,8 @@ function bubbleWrap() {
 }
 
 function scareImage(){
+    var secret = new Audio("./tones/nomusic.mp3");
+    secret.volume = 1;
     let divtag = document.getElementById("grid");
     divtag. parentNode. removeChild(divtag);
     let divScare = document.getElementById("scare");
@@ -138,11 +140,7 @@ function scareImage(){
       console.log('Done!');
     }
     changeImg();
-
-
-    var audio = new Audio("./tones/nomusic.mp3");
-    audio.volume = 1;
-    audio.play();
+    secret.play();
 }
 // Rerender's new set of bubbles when window is resized
 window.addEventListener('resize', bubbleWrap);
