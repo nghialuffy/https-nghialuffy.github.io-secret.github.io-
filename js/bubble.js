@@ -70,7 +70,8 @@ function bubbleWrap() {
   document.documentElement.style.setProperty("--pop-duration", popDuration);
   
   const bubbles = document.getElementsByClassName("bubble");
-  
+  var playList = ["./tones/1.wav","./tones/2.wav","./tones/3.wav","./tones/4.wav","./tones/5.wav","./tones/6.wav","./tones/7.wav","./tones/8.wav"]
+
   for (let i = 0, numBubbles = bubbles.length; i < numBubbles; i += 1) {
     const pairsOfRows = 2 * numberTilesWide;
     const greaterThanSecondRowFirst = i % pairsOfRows >= numberTilesWide;
@@ -94,8 +95,11 @@ function bubbleWrap() {
       if (!bubbles[i].getAttribute('popped')) {
         // add data-attribute to bubble
         bubbles[i].setAttribute('popped',true);
-        var audio = new Audio("./tones/" + ((i%8)+1) + '.wav');
-        console.log("./tones/" + ((i%16)+1) + '.wav')
+
+
+        var audio = new Audio(playList[i%8]);
+        audio.load();
+        audio.volume = 1;
         audio.play();
         console.log(`Bubble ${i} popped!`);
         // add css class containing the animation
@@ -121,13 +125,6 @@ function scareImage(){
     divScare.setAttribute("height", `${window.innerHeight}`);
     divScare.setAttribute("width", "100%");
     divScare.setAttribute("position", "absolute");
-    
-    for(i = 1 ; i < 10; i++){
-      let timeout = setTimeout(() => {
-        console.log(i);
-        document.getElementById('scare').src=`./img/${i % 4 + 1}.png`;
-      },1000);
-    }
 
     function delay() {
       return new Promise(resolve => setTimeout(resolve, 2332));
@@ -144,6 +141,7 @@ function scareImage(){
 
 
     var audio = new Audio("./tones/nomusic.mp3");
+    audio.volume = 1;
     audio.play();
 }
 // Rerender's new set of bubbles when window is resized
